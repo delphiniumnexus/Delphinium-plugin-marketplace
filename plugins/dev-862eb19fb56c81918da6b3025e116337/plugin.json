@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dev-862eb19fb56c81918da6b3025e116337",
+  "version": "1.0.3-marketplace.1",
+  "description": "Private Developer guidance connection test using the existing 3DDDs service.",
+  "author": {
+    "name": "App developer"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "3DDDs Developer",
+        "shortDescription": "Guided development beta",
+        "longDescription": "Private Developer guidance connection test using the existing 3DDDs service. Requires an authorized account and an explicitly selected owned cloud project for saved work. Installation and cross-account compatibility remain to be verified.",
+        "developerName": "App developer",
+        "category": "Other",
+        "capabilities": [],
+        "websiteURL": "https://ddd-rule-packs.grayv516.chatgpt.site",
+        "logo": "./assets/developer_compact_512.png",
+        "composerIcon": "./assets/developer_compact_512.png"
+      }
+    }
+  }
+}

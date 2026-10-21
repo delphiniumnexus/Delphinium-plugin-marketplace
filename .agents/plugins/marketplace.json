@@ -1,0 +1,20 @@
+{
+  "name": "delphinium-private",
+  "interface": {
+    "displayName": "Delphinium Private Plugins"
+  },
+  "plugins": [
+    {
+      "name": "dev-862eb19fb56c81918da6b3025e116337",
+      "source": {
+        "source": "local",
+        "path": "./plugins/dev-862eb19fb56c81918da6b3025e116337"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Other"
+    }
+  ]
+}
