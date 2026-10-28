@@ -1,72 +1,97 @@
-# Installation and acceptance gates
+# Installation and acceptance checks
 
-All gates below are separate. Local preparation passed no live install gate.
-Record client/version, account used, reviewed commit/package version, UTC time,
-observed result, and sanitized evidence for each gate. Keep tokens, email addresses,
-project content, and owner identifiers out of this repository.
+Use [Reggie's Windows guide](REGGIE_START_HERE.md) for the installation steps.
+These checks distinguish preparation from observed tester results.
 
-## 1. Private source and client installation
+Record the client/version, package version, tested commit, date, observed result
+and sanitized evidence using [the report template](TEST_REPORT_TEMPLATE.md).
+Store raw account and fixture details privately.
 
-Status: pending. Reggie's account, client eligibility, and private-repo read access
-are unverified. The owner has not authorized a push, invitation, or access change.
+## 1. Distribution and desktop installation
 
-After the owner approves the exact local diff, push only the isolated branch to
-the existing private repository. Choose a reviewed commit containing the catalog.
-An eligible account with already authorized read access can register that exact
-commit using the README command. Do not add a personal access token to a URL or
-package. If access is absent, stop and request a separate access decision.
+**Pending on Reggie's Windows PC.**
 
-In the supported desktop plugin browser, confirm the marketplace title and the
-single Developer entry. Review its package/permissions before installing. Confirm
-the expected version, icon, activation skill, and named MCP connection load in a
-fresh test conversation. Installation must be observed; CLI registration or valid
-JSON is insufficient. Stop if the client drops the skill/server or needs unsupported
-App bindings. Do not recreate the online listing to bypass that incompatibility.
+The owner will make the marketplace repository public. The package is in the
+same repository as the catalog, so installation needs no read access to a
+separate private development repository and no collaborator invitation.
 
-## 2. Authentication and service authorization
+Register the source, restart the current ChatGPT desktop app, and verify the
+marketplace and single Developer entry in the plugin browser. Inspect that the
+expected version, existing icon, activation skill and Developer MCP connection
+actually load. Valid JSON or successful source registration is not a live install
+pass. Record missing components or unsupported client behavior as failures.
 
-Status: pending for this package and Reggie's account. A separate existing owner
-connection returned its guide; this does not clear this gate.
+## 2. Authentication and service access
 
-Use only the intended tester's own existing authorized session. Inspect the
-provider and requested scopes. Obtain explicit approval before creating any OAuth
-grant, registering a client, entering credentials, or accepting additional scopes.
-Never reuse the founder's tokens or cookies. Once authorized, read only
-`gds_agent_guide` first and record success without touching projects. Stop on an
-auth or entitlement failure; report the failing layer and sanitized error.
+**Pending for Reggie's account and this portable package.**
 
-## 3. Data isolation
+Use only Reggie's own sign-in. Let the host/provider run the normal authorization
+flow after he reviews its provider and permissions. Do not embed client secrets,
+reuse owner sessions or disable authentication. Extra scopes or unexpected
+providers require review by the person granting access.
 
-Status: unverified. Installation and successful authentication do not clear it.
+Read only `gds_agent_guide` first. The existing owner's connection returned that
+guide on 2026-10-28; that result does not prove portable OAuth, Reggie's
+entitlement, rich-card rendering or project isolation. If the backend is
+restricted to the owner, report that service-access blocker separately from a
+repository or install error. Do not change the service's access policy as part
+of a package test.
 
-With separately approved test identities and disposable fixtures, verify each
-account can see only its own permitted projects/context. Attempt a bounded read of
-a specifically approved foreign fixture identifier and confirm denial without
-returning foreign content. Do not enumerate or probe real owner projects. Confirm
-that caller IDs or ownership claims cannot expand access, and that a revoked or
-disconnected session loses the affected access. Keep fixture identifiers and raw
-responses in the private test evidence location, outside this distribution repo.
-Do not perform this negative test until its identities/fixtures are authorized.
+## 3. Controlled account isolation
 
-## 4. Save, close, and reopen
+**Unverified. Required before using sensitive project content.**
 
-Status: unverified. This requires an expressly authorized write to a tester-owned
-disposable project and must not use the founder's project as a shortcut.
+The service guide says only the authenticated caller's owned projects can be
+read or changed. This is a declared contract, not an independently observed
+isolation result.
 
-Select that project, load current guide/methods/readiness/context, and render the
-existing interaction. Save one genuine answer using the current revision and one
-operation ID. Reread to verify the saved result. Close the chat/client and reopen
-the same project in a fresh conversation. Confirm the same saved interaction,
-answers, decisions, corrections, and revision persist without a restart or duplicate
-question. Exercise permitted recovery with the original operation ID if a save is
-uncertain. Observe card rendering or the guide's fallback controls. Human acceptance
-stays with the owner on the website; a stored report is not independent verification.
+Use two expressly authorized test accounts and disposable fixtures. Keep their
+identifiers and raw responses in a private evidence location. Before testing,
+define the exact fixtures both owners have authorized for this check.
 
-## Recovery and rollback
+- Create a disposable marker under each identity through supported owner flows.
+- Confirm each identity can list/read its own marker and its own permitted
+  projection; neither account should receive the other's marker in lists.
+- With the fixture owners' authorization, request the exact other fixture ID.
+  Expect a denied/not-found result containing no foreign project content.
+- Confirm the public tools do not accept a caller/owner identity override that
+  expands access. Do not probe real owner records or arbitrary identifiers.
+- Using a connection the tester agrees to disconnect, verify it requires valid
+  authentication again before another protected read. Check provider/host
+  revocation behavior without assuming cached chat content will disappear.
 
-For a failed pilot, record the exact action, target, reason, and last completed
-gate. Stop the affected action. Remove the candidate through the host's supported
-uninstall/source-removal UI or `codex plugin marketplace remove delphinium-private`
-when removal is authorized. Revoking a grant is a separate account action. Do not
-delete project data or alter the original App-bound listing. Local preparation can
-be abandoned by retaining its branch/diff and returning to the untouched base.
+Successful authentication alone does not pass this check. Reggie seeing his own
+project is useful but is not proof that foreign IDs are rejected.
+
+## 4. Save, close and reopen
+
+**Pending on Reggie's disposable project.**
+
+Reggie explicitly chooses cloud storage and authorizes one test project in the
+Windows guide. Do not substitute an owner project or invent an answer. The Pack
+must retrieve current context, methods and readiness before guiding work.
+
+Save one genuine answer with the service's current revision and operation ID
+contract, then read fresh context to confirm it. Close the chat/client. In a new
+conversation, reopen the same saved project and confirm its question state,
+answers, decisions, corrections and revision persist without another project or
+a duplicate interview.
+
+Recover an uncertain operation with its original ID before retrying. Preserve
+the saved interaction if the host needs native controls or a text fallback.
+Record actual card rendering separately from persistence. Human owner review
+remains in the service website; a stored report is not independent verification.
+
+## Recovery
+
+Report the failing step and last completed check. Disable/uninstall the candidate
+through the desktop plugin browser. If also removing the registered source:
+
+```powershell
+codex plugin marketplace remove delphinium-private
+```
+
+Source removal, cached-plugin removal and connection revocation are separate
+actions. Use the host/provider controls for each intended action. Do not delete
+test project data automatically or alter the original App-bound listing.
+

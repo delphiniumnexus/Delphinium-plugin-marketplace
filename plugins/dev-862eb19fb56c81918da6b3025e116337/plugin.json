@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "dev-862eb19fb56c81918da6b3025e116337",
-  "version": "1.0.3-marketplace.1",
-  "description": "Private Developer guidance connection test using the existing 3DDDs service.",
+  "version": "1.0.3-marketplace.2",
+  "description": "3DDDs Developer beta: guided development with the existing account-owned cloud service.",
   "author": {
     "name": "App developer"
   },
@@ -11,7 +11,7 @@
       "interface": {
         "displayName": "3DDDs Developer",
         "shortDescription": "Guided development beta",
-        "longDescription": "Private Developer guidance connection test using the existing 3DDDs service. Requires an authorized account and an explicitly selected owned cloud project for saved work. Installation and cross-account compatibility remain to be verified.",
+        "longDescription": "3DDDs Developer beta for testing the existing guided development cloud service. Connect your own account and explicitly choose an owned cloud project for saved work. This package includes no development repository access. Second-account installation, service access, isolation and save/reopen behavior require live acceptance testing.",
         "developerName": "App developer",
         "category": "Other",
         "capabilities": [],
@@ -22,3 +22,4 @@
     }
   }
 }
+

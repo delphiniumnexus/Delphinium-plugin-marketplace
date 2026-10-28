@@ -1,72 +1,78 @@
-# Developer distribution candidate
+# Developer beta package provenance
 
-## Verified source
+## Source and identity
 
-The existing private listing is
-`plugin_asdk_app_sites_862eb19fb56c81918da6b3025e116337`, current release
-`pluginrel_6ad8fd0e80388191a9bdf7e424cc7a43`, version `1.0.3`, checked 2026-10-21.
-Its package has `plugin.json`, `.codex-plugin/plugin.json`, `.app.json`, and one
-icon. It has no bundled skills or MCP file. The original App mapping is
-`asdk_app_sites_862eb19fb56c81918da6b3025e116337`.
+This distribution continues the existing marketplace candidate at
+`57c093a2050fe8918996f3ffcc9792b3e99aed25` on
+`codex/private-marketplace-setup`.
 
-That mapping identifies an existing registered App. It does not prove that another
-account can use it, nor that copying it transfers access. The original listing,
-release, and binding remain unchanged. This separate distribution candidate uses
-the verified remote MCP endpoint rather than shipping an unproved App dependency.
-It retains the source package name and uses version `1.0.3-marketplace.1` to make
-the local derivative distinguishable. It is not a new release of the online listing.
+That candidate recorded the original private listing
+`plugin_asdk_app_sites_862eb19fb56c81918da6b3025e116337`, release
+`pluginrel_6ad8fd0e80388191a9bdf7e424cc7a43`, version `1.0.3`, checked on
+2026-10-21. Its original App mapping was
+`asdk_app_sites_862eb19fb56c81918da6b3025e116337`. Those identifiers are historical
+provenance, not credentials or grants to another account. The original listing
+and backend are not updated by this distribution preparation.
 
-The icon is copied byte-for-byte from the verified release archive:
+The portable package keeps its existing package name,
+`dev-862eb19fb56c81918da6b3025e116337`, and advances from
+`1.0.3-marketplace.1` to **`1.0.3-marketplace.2`** for the public-beta copy and
+installation documentation. The marketplace keeps its stable
+`delphinium-private` identifier, with the display name **Delphinium Beta Plugins**.
+
+The existing activation skill, remote MCP configuration and icon are preserved.
+The icon's recorded SHA-256 is:
 
 ```text
-assets/developer_compact_512.png
-SHA-256 d15f90f128ee86e54ce89b5c9d0ce54d1d3af92867ec4cfffd1aab7156e6d896
+d15f90f128ee86e54ce89b5c9d0ce54d1d3af92867ec4cfffd1aab7156e6d896
 ```
 
-Presentation changes are limited to a compliant short subtitle and accurate
-Developer-only beta copy. No seven-Pack functionality is implied. The original
-null default prompt is omitted; no replacement prompt or extra capabilities are
-invented. No legacy overlay is needed by the targeted portable format; copying
-the old overlay would retain the App dependency and misleading listing copy.
+## Connection and account boundary
 
-## Remote connection and instructions
+The only remote MCP endpoint is the existing service:
 
-`mcp.json` uses the documented `streamable-http` transport and verified URL:
-`https://ddd-rule-packs.grayv516.chatgpt.site/mcp`.
+`https://ddd-rule-packs.grayv516.chatgpt.site/mcp`
 
-A read-only unauthenticated GET returned HTTP 401 with an OAuth resource metadata
-challenge. The advertised resource matches the exact MCP URL and names
-`https://auth.openai.com` as its authorization server. The challenge named
-`openid resource.invoke email`; metadata also advertises `offline_access` and
-`profile`. No OAuth authorization, client registration, token request, credential
-entry, or new grant was performed.
+The package uses portable `mcp.json`, `streamable-http`, and provider/host
+authentication discovery. It packages no authorization header, token, password,
+client secret, preset client ID or registered App binding. Do not replace this
+with authentication disabled or copy the owner's App binding to work around a
+failed tester connection.
 
-The portable connection leaves OAuth settings to supported host/provider
-discovery. It supplies no client ID, registration mode, scopes, headers, or
-credentials. Do not infer a portable OAuth flow works from the existing App
-connection. Stop for approval before a new grant, new scope, registration, or
-credential setup. Do not set authentication to `none` to work around a failure.
+The prior candidate recorded an unauthenticated HTTP 401 OAuth challenge and
+resource metadata for this endpoint on 2026-10-21. This does not establish that a
+new host's OAuth flow can register/connect successfully.
 
-The downloaded Agent Plugins MCP 1.0.0 schema currently rejects extra server
-properties, including `extensions`, while OpenAI's documentation describes
-OpenAI auth extensions. This candidate uses only the common documented/schema
-shape (`type` and `url`) and records OAuth separately here. Client ingestion and
-OAuth compatibility remain live acceptance gates.
+On 2026-10-28, the existing authenticated owner connection returned
+`gds_agent_guide`. It identifies Developer Pack `0.1.0`, an account-owned cloud
+project workflow, and no repository access, file uploads or local sync. The
+service's Pack version and the distribution package version are separate.
 
-The current authenticated connection successfully returned `gds_agent_guide`
-without accessing a project. The bundled skill requires this current live guide
-and its required methods/readiness checks before work. It is a bootstrap contract,
-not a copy of proprietary server methods or an invented replacement for them.
-The guide reports Developer Pack `0.1.0`; package `1.0.3` is a separate version.
+Only the connection guide was read. No project was listed, created or changed
+during this preparation. No Reggie sign-in, new OAuth grant, account invitation,
+admin-role change, backend edit or deployment was performed.
 
-## Proof boundary
+## Included files
 
-Local validation covers JSON schemas, catalog shape/path containment, instruction
-presence and YAML, package inventory, asset integrity, and prohibited file/secret
-patterns. The marketplace checks are derived from the official documentation;
-they are not an official OpenAI marketplace schema or a host ingestion result.
+- Root portable `plugin.json`.
+- Root portable `mcp.json`.
+- `skills/developer/SKILL.md`, a bootstrap to the current live guide.
+- `assets/developer_compact_512.png`, the existing Developer icon.
 
-It does not prove package tool ingestion, rich-card rendering, second-account
-authentication, service entitlement, tenant isolation, or saved-session persistence.
-The App-bound listing may remain the supported route on some surfaces. Do not
-claim parity or replace that listing until a permitted pilot establishes it.
+The catalog resolves this contained directory through a local `./plugins/...`
+path. There is no dependency on the private 3DDDs development repository. The
+small bootstrap skill and public endpoint address are visible to every reader of
+the repository. Required server methods are fetched from the service at runtime.
+
+## Validation boundary
+
+Preparation checks JSON syntax and documented field rules, one opt-in catalog
+entry, path containment, referenced inventory, skill frontmatter, preserved
+component hashes and common prohibited file/credential patterns. These checks
+are not an official OpenAI ingestion result or a full backend security audit.
+
+Live desktop ingestion, portable OAuth, second-account service access, card
+rendering, controlled cross-account isolation and saved-session persistence
+remain acceptance tests. See [installation checks](INSTALLATION.md) and
+[public review](PUBLIC_READINESS.md).
+
